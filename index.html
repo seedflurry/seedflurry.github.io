@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SeedFlurry</title>
+    <meta name="description" content="SeedFlurry extracts secure IID entropy bytes from reliable onboard hardware.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="SeedFlurry">
+    <meta property="og:description" content="SeedFlurry extracts secure IID entropy bytes from reliable onboard hardware.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seedflurry.github.io">
+    <meta property="og:image" content="https://seedflurry.github.io/seedflurry.jpg">
+    <link rel="canonical" href="https://seedflurry.github.io">
+    <link rel="icon" href="favicon.ico">
+    <style>
+      a {
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        text-decoration: none;
+      }
+      a,
+      body,
+      h1,
+      html {
+        color: #000;
+      }
+      body,
+      div a,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      main,
+      p,
+      small {
+        width: 100%;
+      }
+      body,
+      h1,
+      header,
+      html {
+        font-weight: normal;
+      }
+      body,
+      h2,
+      header,
+      html,
+      p {
+        font-size: 13px;
+      }
+      body,
+      html {
+        background: #fff;
+        font-family: sans-serif;
+        line-height: 20px;
+        margin: 0;
+      }
+      code {
+        background: #000;
+        border-radius: 5px;
+        box-sizing: border-box;
+        color: #888;
+        display: block;
+        font-size: 11px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin: 0;
+        overflow-y: scroll;
+        padding: 25px 27px 22px;
+        white-space: pre;
+        width: 100%;
+      }
+      div {
+        background: #000;
+        border-radius: 5px;
+        margin: 0 0 20px;
+        padding: 21px 26px 22px;
+      }
+        div:last-child {
+          margin-bottom: 0;
+        }
+        div a:focus-visible {
+          border-radius: 4px;
+          outline: 4px solid;
+        }
+        div a {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          z-index: 2;
+        }
+        div img {
+          display: inline-block;
+          margin: 7px 0 9px 1px;
+        }
+        div p {
+          color: #aaa;
+        }
+      div,
+      header {
+        position: relative;
+      }
+      footer {
+        margin: 0 auto 99px;
+      }
+        footer p {
+          margin: 0 0 9px;
+        }
+      footer,
+      header,
+      main {
+        box-sizing: border-box;
+        max-width: 540px;
+      }
+      footer,
+      header,
+      p {
+        color: #444;
+      }
+        p span {
+          color: #fff;
+        }
+      h1 {
+        font-size: 19px;
+        letter-spacing: -0.7px;
+        line-height: 24px;
+        margin: 0 0 32px;
+        word-spacing: 1.6px;
+      }
+      h1,
+      h2,
+      header {
+        text-transform: uppercase;
+      }
+      h2 {
+        font-weight: normal;
+        letter-spacing: -0.2px;
+        line-height: 13px;
+        margin: 0 0 20px;
+        padding-top: 23px;
+      }
+      header {
+        cursor: default;
+        letter-spacing: 2px;
+        margin: 105px auto 60px;
+        padding: 0 25px;
+      }
+        header img {
+          display: block;
+        }
+      main {
+        margin: 0 auto 58px;
+      }
+        main p {
+          margin: 0 0 15px;
+        }
+          main p:last-child {
+            margin-bottom: 0;
+          }
+      main,
+      footer {
+        padding: 0 25px;
+      }
+      p code {
+        background: #eee;
+        border-radius: 3px;
+        color: #222;
+        display: inline;
+        margin: 0 1px;
+        padding: 5px 6px 2px;
+      }
+      small {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 17px;
+        margin: 13px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header><img height="36" src="seedflurry.svg" width="36"></header>
+    <main>
+      <h1>SeedFlurry</h1>
+      <p>SeedFlurry extracts secure IID entropy bytes from reliable onboard hardware.</p>
+      <h2>Pricing</h2>
+      <p>SeedFlurry is only $10 per GB.</p>
+      <h2>Qubit Emulation</h2>
+      <p>SeedFlurry uses CPU oscillation measurements to mimic qubit behavior on classical hardware (without either qubit decoherence or round-trip quantum computer errors).</p>
+      <p><code style="margin-left: 0;">oscillate</code> mimics qubit superposition and quantum error correction.</p>
+      <p><code style="margin-left: 0;">allocate</code> mimics auxiliary qubit allocation for quantum error correction.</p>
+      <p><code style="margin-left: 0;">collapse</code> mimics qubit measurement.</p>
+      <p><code style="margin-left: 0;">seedflurry</code> returns the entangled result of each <code>collapse</code> measurement.</p>
+      <h2>Example</h2>
+      <p style="margin-bottom: 21px;">The following POSIX C program is an example of SeedFlurry (requiring C99-compliant bit widths in <code>stdint.h</code> for <code>uint8_t</code>, <code>int32_t</code> and <code>uint32_t</code>).</p>
+      <code>#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdint.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdio.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;stdlib.h&gt;</span>
+#<span style="color: #bbb;">include</span> <span style="color: #fff;">&lt;time.h&gt;</span>
+
+<span style="color: #ccc;">void</span> <span style="color: #eee;">error</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #bbb;">exit</span>(<span style="color: #fff;">EXIT_FAILURE</span>);
+}
+
+<span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">allocate</span>(<span style="color: #ccc;">uint32_t</span> *<span style="color: #eee;">mix_a</span>, <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #ccc;">int32_t</span> <span style="color: #eee;">is_clock_measurement</span>;
+
+  <span style="color: #bbb;">if</span> (!(*<span style="color: #eee;">mix_a</span>)) {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_getres</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span> ^ <span style="color: #fff;">1</span>;
+  } <span style="color: #bbb;">else</span> {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_getres</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span>;
+  }
+
+  <span style="color: #bbb;">if</span> (<span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span> != <span style="color: #fff;">1</span>) {
+    <span style="color: #eee;">error</span>();
+  }
+
+  *<span style="color: #eee;">mix_a</span> += <span style="color: #eee;">is_clock_measurement</span>;
+
+  <span style="color: #bbb;">if</span> (!(*<span style="color: #eee;">mix_a</span>)) {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span> ^ <span style="color: #fff;">1</span>;
+  } <span style="color: #bbb;">else</span> {
+    <span style="color: #eee;">is_clock_measurement</span> = <span style="color: #bbb;">clock_gettime</span>(<span style="color: #fff;">CLOCK_REALTIME</span>, <span style="color: #eee;">s</span>);
+
+    <span style="color: #bbb;">if</span> (<span style="color: #eee;">is_clock_measurement</span> == <span style="color: #fff;">-1</span>) {
+      <span style="color: #eee;">error</span>();
+    }
+
+    <span style="color: #eee;">is_clock_measurement</span> ^= <span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span>;
+  }
+
+  *<span style="color: #eee;">mix_a</span> += <span style="color: #eee;">is_clock_measurement</span>;
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">s</span>-&gt;<span style="color: #eee;">tv_nsec</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">oscillate</span>(<span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">mix_a</span>,
+                  <span style="color: #ccc;">uint32_t</span> *<span style="color: #eee;">mix_b</span>,
+                  <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">allocations</span>[<span style="color: #fff;">2</span>] = {<span style="color: #fff;">0</span>, <span style="color: #fff;">0</span>};
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">i</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">j</span>;
+
+  <span style="color: #bbb;">while</span> (<span style="color: #eee;">allocations</span>[<span style="color: #fff;">0</span>] == <span style="color: #eee;">allocations</span>[<span style="color: #fff;">1</span>]) {
+    <span style="color: #eee;">i</span> = <span style="color: #fff;">0</span>;
+
+    <span style="color: #bbb;">while</span> (<span style="color: #eee;">i</span> &lt; <span style="color: #fff;">2</span>) {
+      <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>] += <span style="color: #eee;">allocate</span>(&amp;<span style="color: #eee;">mix_a</span>, <span style="color: #eee;">s</span>);
+      <span style="color: #eee;">mix_a</span> += <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>];
+      *<span style="color: #eee;">mix_b</span> += <span style="color: #eee;">mix_a</span> ^ <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>];
+      <span style="color: #eee;">j</span> = <span style="color: #fff;">0</span>;
+
+      <span style="color: #bbb;">while</span> (<span style="color: #eee;">j</span> &lt; <span style="color: #fff;">5</span>) {
+        <span style="color: #eee;">mix_a</span> += (<span style="color: #eee;">mix_a</span> &gt;&gt; <span style="color: #fff;">8</span>) + *<span style="color: #eee;">mix_b</span>;
+        *<span style="color: #eee;">mix_b</span> += <span style="color: #fff;">11111111</span>;
+        <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>] += <span style="color: #eee;">allocate</span>(&amp;<span style="color: #eee;">mix_a</span>, <span style="color: #eee;">s</span>);
+        <span style="color: #eee;">mix_a</span> += <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>];
+        *<span style="color: #eee;">mix_b</span> += <span style="color: #eee;">mix_a</span> ^ <span style="color: #eee;">allocations</span>[<span style="color: #eee;">i</span>];
+        <span style="color: #eee;">j</span>++;
+      }
+
+      <span style="color: #eee;">i</span>++;
+    }
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">mix_a</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">collapse</span>(<span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">mix_a</span>, <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec</span> *<span style="color: #eee;">s</span>) {
+  <span style="color: #bbb;">return</span> (<span style="color: #eee;">mix_a</span> + <span style="color: #fff;">s</span>-&gt;<span style="color: #fff;">tv_nsec</span>) &amp; <span style="color: #fff;">7</span>;
+}
+
+<span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">seedflurry</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">struct</span> <span style="color: #eee;">timespec s</span>;
+  <span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">mix_a</span> = <span style="color: #fff;">111</span>;
+  <span style="color: #ccc;">uint32_t</span> <span style="color: #eee;">mix_b</span> = <span style="color: #fff;">1111</span>;
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">entropy</span> = <span style="color: #fff;">1</span>;
+
+  <span style="color: #eee;">mix_a</span> += <span style="color: #eee;">allocate</span>(&amp;<span style="color: #eee;">mix_a</span>, &amp;<span style="color: #eee;">s</span>);
+
+  <span style="color: #bbb;">while</span> (!(<span style="color: #eee;">entropy</span> &gt;&gt; <span style="color: #fff;">6</span>)) {
+    <span style="color: #eee;">mix_a</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">mix_a</span>, &amp;<span style="color: #eee;">mix_b</span>, &amp;<span style="color: #eee;">s</span>);
+    <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> &lt;&lt; <span style="color: #fff;">2</span>) ^ <span style="color: #eee;">collapse</span>(<span style="color: #eee;">mix_a</span>, &amp;<span style="color: #eee;">s</span>);
+  }
+
+  <span style="color: #eee;">mix_a</span> += <span style="color: #eee;">oscillate</span>(<span style="color: #eee;">mix_a</span>, &amp;<span style="color: #eee;">mix_b</span>, &amp;<span style="color: #eee;">s</span>);
+  <span style="color: #eee;">entropy</span> = (<span style="color: #eee;">entropy</span> &lt;&lt; <span style="color: #fff;">2</span>) ^ <span style="color: #eee;">collapse</span>(<span style="color: #eee;">mix_a</span>, &amp;<span style="color: #eee;">s</span>);
+  <span style="color: #bbb;">return</span> <span style="color: #eee;">entropy</span>;
+}
+
+<span style="color: #ccc;">int</span> <span style="color: #bbb;">main</span>(<span style="color: #ccc;">void</span>) {
+  <span style="color: #ccc;">uint8_t</span> <span style="color: #eee;">i</span> = <span style="color: #fff;">0</span>;
+
+  <span style="color: #bbb;">while</span> (<span style="color: #eee;">i</span> &lt; <span style="color: #fff;">10</span>) {
+    <span style="color: #eee;">i</span>++;
+    <span style="color: #bbb;">printf</span>(<span style="color: #fff;">"Result %u is %u.\n"</span>, <span style="color: #eee;">i</span>, <span style="color: #eee;">seedflurry</span>());
+  }
+
+  <span style="color: #bbb;">return</span> <span style="color: #fff;">0</span>;
+}</code>
+      <h2 style="margin-top: 21px;">Independence</h2>
+      <p>Each <code>seedflurry</code> procedure entangles measurements of independent CPU time fluctuations within a pool of system-wide CPU time fluctuations.</p>
+      <p>The insignificance of system-wide CPU time fluctuations to an IID <code>seedflurry</code> byte is similar to the insignificance of rain drops to an IID coin flip.</p>
+      <p>Therefore, each <code>seedflurry</code> byte is independent.</p>
+      <h2>Randomness Test Results</h2>
+      <p><code style="margin-left: 0;">seedflurry</code> returns 8 bits (with near-perfect entropy) as a conditioned result from entangling at least 1470 bits of sequential CPU time measurements.</p>
+      <p>SeedFlurry randomness tests were performed on an AMD A4-9120C with <code>gcc -O3</code>.</p>
+      <p>SeedFlurry yields excellent test results among several NIST SP 800-90B IID entropy assessment runs that each generated 1 million <code>seedflurry</code> bytes.</p>
+      <p>In <code>ea_iid</code> and <code>ea_restart</code>, SeedFlurry had an <code>H_original</code> of 7.86+ (out of 8), an <code>H_bitstring</code> of 0.997+ (out of 1) and no statistical test failures.</p>
+      <p>Entropy estimates improved (an <code>H_original</code> of 7.95+ and an <code>H_bitstring</code> of 0.999+) as the count of <code>seedflurry</code> bytes increased to 10 million.</p>
+      <p>Furthermore, SeedFlurry yields excellent results in statistical test suites (such as PractRand 0.96) without post-processing <code>seedflurry</code> output.</p>
+      <p>During a theoretical clock-setting attack in a compromised system, 52 is the worst-case precision of CPU time measurement bits per <code>seedflurry</code> byte.</p>
+      <p>After a simulated clock-setting attack (truncating each <code>tv_nsec</code> result to 1 bit), the aforementioned randomness quality estimates persisted.</p>
+      <h2>Speed</h2>
+      <p><code style="margin-left: 0;">oscillate</code> uses fast PRNG mixing procedures for simultaneously generating CPU fluctuations and conditioning sequential CPU time measurements.</p>
+      <p>SeedFlurry speed tests were performed on an AMD A4-9120C with <code>gcc -O3</code> in a <code>#pragma GCC unroll 0</code> loop.</p>
+      <p>569 milliseconds was the fastest process execution speed among several test runs that generate (and hash) 1 million <code>seedflurry</code> bits sequentially.</p>
+      <p>Constrained SeedFlurry speed (compared to CSPRNGs) is suitable for generating sparse sequences of high-entropy bytes for cryptography.</p>
+      <p>Parallel <code>seedflurry</code> function invocations can increase speed in application-specific cases (within hardware capacity).</p>
+      <h2>Compatibility</h2>
+      <p>SeedFlurry is compatible with platforms that have a readable clock (with nanosecond-precision measurements and nanosecond-interval continuity).</p>
+      <p>Each platform-specific SeedFlurry implementation (POSIX or Windows) requires a brief evaluation of <code>oscillate</code> procedures (for entropy quality).</p>
+      <h2>Reliability</h2>
+      <p>SeedFlurry leverages the already-vetted hardware reliability of CPUs and OS system clocks.</p>
+      <p>SeedFlurry entropy quality is resistent to physical environment factors, VM constraints and entropy pool starvation.</p>
+      <p><code style="margin-left: 0;">seedflurry</code> returns PQC-ready entropy that's non-blocking (aside from elapsed CPU time) and non-depletable (within hardware capacity).</p>
+      <p>Defensive code in <code>seedflurry</code> is resistant to <code>-O3</code> compiler liberties (without requiring <code>-O0</code>) that could interfere with CPU time measurements.</p>
+      <p>Anomalous system clock measurement failures in <code>seedflurry</code> should fall back to alternative clock interfaces (instead of aborting with <code>EXIT_FAILURE</code>).</p>
+      <p>Auxiliary bit allocation with time measurement variance validation in <code>allocate</code> increases resistance against rapid clock-setting attacks.</p>
+      <p>Adversarial cases should be tested in a sandbox environment by setting the appropriate clock to a fixed time in parallel with <code>seedflurry</code> procedures.</p>
+      <p>Adversary testing ensures that <code>seedflurry</code> maintains high entropy even with up to 1 nanosecond of time continuity between each clock-setting attack.</p>
+      <p>Clock functions should be verified as immune to Y2K38 (for example, POSIX.1-2024 requires that the width of <code>time_t</code> is at least 64 bits).</p>
+      <p>SeedFlurry hasn't experienced any system clock measurement failures through substantial stress testing.</p>
+      <h2>Open Source</h2>
+      <p style="margin-bottom: 21px;">SeedFlurry contributes to relevant open-source innovation by creating (and maintaining) the following hyper-efficient pseudorandom number generators.</p>
+      <div>
+        <a href="https://github.com/seedflurry/ghostscramble"></a>
+        <img height="36" src="ghostscramble.jpg" width="36">
+        <p><span>GhostScramble</span> is the hyper-efficient 64-bit PRNG.</p>
+      </div>
+      <div>
+        <a href="https://github.com/seedflurry/robotburst"></a>
+        <img height="36" src="robotburst.jpg" width="36">
+        <p><span>RobotBurst</span> is the hyper-efficient 64-bit CSPRNG.</p>
+      </div>
+    </main>
+    <footer>
+      <small style="margin-top: 0;">© 2026 SeedFlurry &lt;<a href="mailto:seedflurry@gmail.com">seedflurry@gmail.com</a>&gt;</small>
+      <small>Unofficial mentions of SeedFlurry and associated intellectual property are likely to contain copyright infringement, fraudulent claims, inaccuracies and outdated content.</small>
+      <small>The following privacy policy (defined as Privacy Policy) pertains to the SeedFlurry website at seedflurry.github.io, including all associated intellectual property (defined as SeedFlurry), as a notice to you, the user (defined as User) and SeedFlurry.</small>
+      <small>SeedFlurry may indirectly (through GitHub Pages) collect IP address information from User.</small>
+      <small>SeedFlurry may directly collect email addresses and payment information from User communication (and User payment transactions) with SeedFlurry.</small>
+      <small>SeedFlurry doesn't share User information without explicit written permission from User, although the aforementioned information may be transmitted through communication services (that may each define their own privacy policy).</small>
+    </footer>
+  </body>
+</html>
